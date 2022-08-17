@@ -1,0 +1,12 @@
+low_pass 2 3 5 7 10
+high_pass 2 3 5 7 10
+laplacian 2 3 5 7 10
+laplacian_multiscale 
+2 4 6 8 10
+1 2 3 4
+band_pass
+2 3
+3 5
+4 6
+5 8
+5 10

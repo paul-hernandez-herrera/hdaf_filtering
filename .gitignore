@@ -1,0 +1,10 @@
+# Cache
+__pycache__/
+
+#distribution temp
+build/
+dist/
+*.egg-info/
+
+# Spyder project
+.spyproject
