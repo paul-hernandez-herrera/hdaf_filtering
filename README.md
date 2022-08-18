@@ -29,7 +29,7 @@ The current python implementation is designed to filter the 2D/3D image in the f
 # Instalation
 ## Requirements
 1. Tested on Unix (Ubuntu 22.04) and Windows 11
-2. Tested on Python 3.7.13 (Google Colab) and Python 3.10.5 (Locally)
+2. Tested on Python 3.7.13 (Google Colab) and Python 3.10.5 (locally)
 
 ## Instructions
 1. It is recomended to create a local virtual enviroment. However, this step can be skipped
@@ -41,10 +41,13 @@ The current python implementation is designed to filter the 2D/3D image in the f
 		2. Unix: ``` source env_hdaf_filter/bin/activate ```
 2. Install hadf_filter module
 	1. PyPi: ``` pip install hdaf_filter==0.1.1 ```
-	2. Github: NEED TO WRITE
+	2. Github: ``` pip install git+https://github.com/paul-hernandez-herrera/hdaf_filtering.git ```
 	
 # Usage
 ## **Using Python script**
+Use this Google Colab (requires a gmail account)   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paul-hernandez-herrera/hdaf_filtering/blob/master/colab_notebooks/test_hdaf_filter_module.ipynb) to test the hdaf_filter modlude in a sample image
+
+If you want to use it locally follow this steps:
 1. Import the module using 
 
 	```from hdaf_filter import hdaf, input_output```
@@ -71,8 +74,6 @@ The current python implementation is designed to filter the 2D/3D image in the f
 	```output6 = obj.apply_filter("laplacian_multiscale",[2,3,5,7,10])```
 	
 	```output7 = obj.apply_filter("laplacian_multiscale",[1,3,4])```
-
-**Open this Jupyter notebook in Google Colab to test the filter**
 ## **Using terminal**
 1. Open a terminal, and activate the virtual enviroment (Step 1.iv from Instructions) in case you created it.
 2. Run the command: 
