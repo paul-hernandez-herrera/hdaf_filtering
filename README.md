@@ -24,7 +24,14 @@ The current python implementation is designed to filter the 2D/3D image in the f
 	- ``` img_spatial_domain = np.fft.ifftn(img) ```
 	- ``` img_spatial_domain = np.real(img_spatial_domain) ```
 5. Repeat step 2 to 5 for each filter (low-pass, high-pass, band-pass, laplacian). 
-**Impotant note: Multi-scale laplacian filter requires a sligtly modification of these steps see paper [MESON](https://doi.org/10.1016/j.jneumeth.2016.03.019)**
+
+**Multi-scale laplacian filter requires a sligtly modification of these steps see paper [MESON](https://doi.org/10.1016/j.jneumeth.2016.03.019)**
+
+## Important note
+**The low_pass filter is designed to resemble an almost ideal low-pass filter by setting the band transition to decrease rapidily at the cut-off frequency (n=60). The speed of decrease can be controlled by the value *n*  in the low pass filter (see paper D. Jiménez et al. 2015 and P. Hernandez-Herrera 2016). In the implementation it is controled by hdaf.set_n(n), if the value is set to n=0 the filter in the spatial domain correspond to a GAUSSIAN FILTER. Hence, the code can be use for Gaussian filtering including DoG with the band_pass filter.**
+
+The following figure depicts the speed of decrease at the cut-off value
+![Example setting n](https://raw.githubusercontent.com/paul-hernandez-herrera/hdaf_filtering/master/figures/low_pass_filter_decay.png)
 
 # Instalation
 ## Requirements
