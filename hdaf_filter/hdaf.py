@@ -78,7 +78,7 @@ class filt():
             img_spatial_domain = self.apply_laplacian_multiscale(radius)
             #activate the default values
             self.set_save_plot(temp_save_plot); self.set_save_output(temp_save_output)   
-        elif:
+        else:
             #low_pass, high_pass, laplacian, and band_pass require the same steps to apply the filter
             filter_ = self.get_filter(filter_identifier,radius)            
             img_filtered = filter_ * self.img_FT
