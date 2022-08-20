@@ -52,7 +52,7 @@ The following figure depicts the speed of decrease at the cut-off value
 	
 # Usage
 ## **Using Python script**
-Use this Google Colab (requires a gmail account)   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paul-hernandez-herrera/hdaf_filtering/blob/master/colab_notebooks/test_hdaf_filter_module.ipynb) to test the hdaf_filter modlude in a sample image
+Use this Google Colab (requires a gmail account)   [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/paul-hernandez-herrera/hdaf_filtering/blob/master/colab_notebooks/test_hdaf_filter_module.ipynb) to test the hdaf_filter module in a sample image
 
 If you want to use it locally follow this steps:
 1. Import the module using 
@@ -85,7 +85,7 @@ If you want to use it locally follow this steps:
 1. Open a terminal, and activate the virtual enviroment (Step 1.iv from Instructions) in case you created it.
 2. Run the command: 
 	
-	``` python -m hdaf_filter --input_file path_to_input_file parameters_file path_to_parameters_file```
+	``` python -m hdaf_filter --input_file path_to_input_file --parameters_file path_to_parameters_file```
 	
 	where **path_to_input_file** is the path pointing to the input file to process with extension *tif* or a folder containing *tif* images. It can be 2D or 3D image stack, and **path_to_parameters_file**  is the path pointing to a file containing the list of filters to be applied and the parameters
 3. The following image shows an example of parameters file
