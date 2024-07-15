@@ -32,7 +32,7 @@ class filt():
         self.img = self.__create_3d_image(input_img)
 
         #if the shape is the same as the previous it is not necessary to recompute the filters
-        if not(temp_shape==self.img.shape):
+        if temp_shape !=self.img.shape:
             #we need to re-compute the fixed variables/filter in case the shape of the new image is different from previous image shape
             self.freq_norm_square = self.__computer_norm_frequency_squared(self.img.shape)
             
@@ -100,7 +100,7 @@ class filt():
     def apply_laplacian_multiscale(self, radii):
         img_multiscale_lap = np.zeros(self.img.shape)
         for radius in radii:
-            img_current_radius_lap = self.__create_3d_image(np.real(self.apply_filter('laplacian', radius)))
+            img_current_radius_lap = self.__create_3d_image(np.real(self.apply_filter('laplacian', radius))) / self.__constant_to_normalize_filter(radius)
             I = np.abs(img_current_radius_lap) > np.abs(img_multiscale_lap)
             img_multiscale_lap[I] = img_current_radius_lap[I]
         return img_multiscale_lap    
@@ -135,9 +135,7 @@ class filt():
         cnk = self.__get_cnk(radius)
         
         #coefficients of the polynomial
-        coefficients = []
-        for i in range(self.n,-1,-1):
-            coefficients.append(1/np.math.factorial(i))
+        coefficients = [1 / np.math.factorial(i) for i in range(self.n, -1, -1)]
             
         # changing values of x, according to the selected scale
         xi =  self.freq_norm_square * np.power(cnk,2)
@@ -150,9 +148,9 @@ class filt():
     
     def __get_low_pass_filter(self, radius):
         #function to get the low pass filter using the given n and radius
-        key = str(self.n)+"_"+str(radius)
+        key = f"{self.n}_{radius}"
         
-        if not(self.dict_low_pass_filters.__contains__(key)):
+        if key not in self.dict_low_pass_filters:
             #construct low pass filter
             self.dict_low_pass_filters[key] = self.__construct_low_pass_filter(radius)
         return self.dict_low_pass_filters[key]    
@@ -209,5 +207,9 @@ class filt():
         return freq_norm_square 
     
     def __convert_radius_to_cut_off_frequency(self, radius):
-        cut_off_freq = (0.542423208/radius) + (0.0957539421/(radius**2))
-        return cut_off_freq 
+        return (0.542423208/radius) + (0.0957539421/(radius**2))
+    
+    def __constant_to_normalize_filter(self, radius):
+        sigma = self.__convert_radius_to_cut_off_frequency(radius)
+        
+        return sigma**2
